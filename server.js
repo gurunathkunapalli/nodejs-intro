@@ -1,24 +1,35 @@
 /*
  *
- * This is the canonical node.js implementation.
+ * This re-implements the same server to use the popular express module.
  *
- * This has no dependencies. Run this as:
+ * To make this work in this repo, you can run 
  *
- * node server.js
+ * $ npm install
+ *
+ * In your own project, run
+ *
+ * $ npm install express --save
+ *
+ * To actually run the app, you'll still use:
+ * 
+ * $ node server.js
  *
  * A web page will appear at 127.0.0.1:1337, and it will say "Hello World"
  *
- * The console will show the log message.
+ * Notice how much easier and clearer this code is. This also shows a bit of node philosophy. Node Core is intentionally minimal. Developers can implement improved versions, and fight it out on NPM. All node apps end up being stacks of dependency trees, composed of tiny modules loosely connected.
  * 
  */
 
 
 
-var http = require("http");
+var express = require("express");
 
-http.createServer(function(req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\n');
-}).listen(1337, '127.0.0.1');
+var app = express();
+
+app.get('/', function(req, res) {
+  res.send("Hello World");
+});
 
 console.log("Server running at http://127.0.0.1:1337/");
+
+app.listen(1337);
