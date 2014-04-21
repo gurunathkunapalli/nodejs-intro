@@ -1,0 +1,11 @@
+{
+  "name": "nodejs-intro",
+  "version": "0.0.1",
+  "description": "A small app to help new developers understand the intentions and nature of node.js",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andre Behrens",
+  "license": "apache2"
+}
