@@ -1,22 +1,14 @@
 /*
  *
- * This re-implements the same server to use the popular express module.
+ * Implemented a new path, /data.xml that proxies a request for the homepage xml file.
  *
- * To make this work in this repo, you can run 
- *
- * $ npm install
- *
- * In your own project, run
- *
- * $ npm install express --save
- *
- * To actually run the app, you'll still use:
+ * This looks weird and complicated and it is.
  * 
- * $ node server.js
+ * Notice that we have to parse the url we want into host and path using the built-in url module.
  *
- * A web page will appear at 127.0.0.1:1337, and it will say "Hello World"
+ * We construct a header out of these values.
  *
- * Notice how much easier and clearer this code is. This also shows a bit of node philosophy. Node Core is intentionally minimal. Developers can implement improved versions, and fight it out on NPM. All node apps end up being stacks of dependency trees, composed of tiny modules loosely connected.
+ * Notice the .on events system of managing data connections. Notice the chunking of data. This makes the app faster, but much harder to understand.
  * 
  */
 
