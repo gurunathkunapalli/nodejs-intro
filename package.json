@@ -10,6 +10,7 @@
   "license": "apache2",
   "dependencies": {
     "express": "~4.0.0",
-    "request": "~2.34.0"
+    "request": "~2.34.0",
+    "jade": "~1.3.1"
   }
 }

@@ -12,12 +12,23 @@
  * 
  */
 
-
+var jade = require("jade");
 var express = require("express");
 var app = express();
 
+app.set('view engine', 'jade');
+
+app.set('view options', {
+  layout: false
+});
+
+app.use(express.static(__dirname));
+
 app.get('/', function(req, res) {
-  res.send("Hello World");
+  var data = {
+    messageText: "Hello, world"
+  };
+  res.render("index", data);
 });
 
 require("./rss-proxy.js")(app);
