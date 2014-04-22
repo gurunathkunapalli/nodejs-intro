@@ -1,17 +1,14 @@
 /*
  *
- * Eventually, we're going to want to cut our app up into pieces. This will also serve to explain how node module includes work.
+ * A real website has real pages. In this iteration, I've added the jade templating engine, and told express to use it for views.
  *
- * We replaced our handler for /data.xml with a require of a new file, rss-proxy.js.
+ * This means I can say res.render(index, data), and express knows I mean index.jade in the views folder. You can use other template engines like ejs or rust as well.
  *
- * Note that we require the module, and call it like a function, passing it the app object. 
- *
- * When we require a module, we are guaranteed that one thing will come back. It could be anything, a string, a number, an array, a regex, any JavaScript value. Most of the time, we'll expect a function or an object to instanciate. In this case, we expect to receive a function that takes one argument, the express app.
- *
- * Open rss-proxy.js to see the other end of this.
+ * We've also told express to use jade to look for static resources like js and css in the "public" directory. That means I can cas for /styles.css, and express will find the file in public/styles.css
  * 
  */
 
+var path = require("path");
 var jade = require("jade");
 var express = require("express");
 var app = express();
@@ -22,7 +19,7 @@ app.set('view options', {
   layout: false
 });
 
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get('/', function(req, res) {
   var data = {
