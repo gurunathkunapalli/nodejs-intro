@@ -3,7 +3,15 @@ A Simple Node.js Introduction
 
 This repo represents a presentation made to NYT developers introducing node and node concepts, aimed at developers familiar with coding, but not node itself.
 
-It contains a list of tags which represent iterative steps in the development process:
+It contains a list of tags which represent iterative steps in the development process.
+
+You can grab this repo and switch between the various tags by calling
+
+```
+git checkout #{tagname}
+```
+
+The available tags are:
 
 01-fresh
 --------
