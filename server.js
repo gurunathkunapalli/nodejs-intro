@@ -1,34 +1,34 @@
 /*
  *
- * This re-implements the same server to use the popular express module.
+ * A real website has real pages. In this iteration, I've added the jade templating engine, and told express to use it for views.
  *
- * To make this work in this repo, you can run 
+ * This means I can say res.render(index, data), and express knows I mean index.jade in the views folder. You can use other template engines like ejs or rust as well.
  *
- * $ npm install
- *
- * In your own project, run
- *
- * $ npm install express --save
- *
- * To actually run the app, you'll still use:
- * 
- * $ node server.js
- *
- * A web page will appear at 127.0.0.1:1337, and it will say "Hello World"
- *
- * Notice how much easier and clearer this code is. This also shows a bit of node philosophy. Node Core is intentionally minimal. Developers can implement improved versions, and fight it out on NPM. All node apps end up being stacks of dependency trees, composed of tiny modules loosely connected.
+ * We've also told express to use jade to look for static resources like js and css in the "public" directory. That means I can cas for /styles.css, and express will find the file in public/styles.css
  * 
  */
 
-
-
+var path = require("path");
+var jade = require("jade");
 var express = require("express");
-
 var app = express();
 
-app.get('/', function(req, res) {
-  res.send("Hello World");
+app.set('view engine', 'jade');
+
+app.set('view options', {
+  layout: false
 });
+
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get('/', function(req, res) {
+  var data = {
+    messageText: "Hello, world"
+  };
+  res.render("index", data);
+});
+
+require("./rss-proxy.js")(app);
 
 console.log("Server running at http://127.0.0.1:1337/");
 

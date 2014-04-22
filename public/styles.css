@@ -1,0 +1,22 @@
+.mainContent {
+  background: #e0e0e0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.message {
+  background: white;
+  border: 1px solid #eee;
+  box-shadow: #999 0 0 30px;
+  text-align: center;
+
+  width: 80%;
+  font-size: 80px;
+  padding: 20px;
+  font-family: sans-serif;
+  margin: 20px auto;
+  min-height: 400px;
+}
